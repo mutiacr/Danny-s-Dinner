@@ -39,12 +39,23 @@ LIMIT 1;
 /*Closed*/
 
 /*Answering 5th Questions:Which item was the most popular for each customer?*/
-SELECT customer_id,product_name, count(sales.product_id) AS Order_Times
+with CTE as
+(SELECT customer_id,product_name, count(sales.product_id) AS Order_Times
 from sales
 left join menu
 on sales.product_id=menu.product_id
 group by customer_id,product_name
-order by ORDER_TIMES DESC;
+order by Order_Times)
+
+select
+*
+from
+(
+	select customer_id,product_name,Order_Times, RANK() OVER win AS "ranking"
+	from CTE
+	WINDOW win AS (partition by customer_id ORDER BY Order_Times DESC)
+) as sub
+where ranking=1;
 /*Closed*/
 
 /*Answering 6th Questions:Which item was purchased first by the customer after they became a member?*/
