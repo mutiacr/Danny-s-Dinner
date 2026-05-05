@@ -13,7 +13,7 @@ Danny wants to use the data to answer questions about his customers, including:
 - Impact of the loyalty program on customer behavior.
 
 ## 🛠️ Tech Stack & SQL Skills
-*   **Database:** PostgreSQL / MySQL
+*   **Database:** MySQL
 *   **Key Concepts:**
     *   **Joins:** `INNER JOIN`, `LEFT JOIN` for multi-table analysis.
     *   **Aggregations:** `SUM()`, `COUNT()`, `MIN()`, `GROUP BY`.
